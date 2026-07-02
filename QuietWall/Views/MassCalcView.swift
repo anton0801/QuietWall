@@ -110,3 +110,67 @@ struct MassCalcView: View {
         }.frame(maxWidth: .infinity)
     }
 }
+
+struct ConsentWall: View {
+
+    private var actionButtons: some View {
+        VStack(spacing: 12) {
+            Button {
+                mix.acceptConsent()
+            } label: {
+                Image("quit_wwbb")
+                    .resizable()
+                    .frame(width: 300, height: 55)
+            }
+
+            Button {
+                mix.skipConsent()
+            } label: {
+                Text("Skip")
+                    .font(.system(size: 15, weight: .bold, design: .monospaced))
+                    .foregroundColor(.white.opacity(0.7))
+            }
+        }
+        .padding(.horizontal, 12)
+    }
+    
+    let mix: Mix
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Color.black.ignoresSafeArea()
+
+                Image(geometry.size.width > geometry.size.height ? "quit_wwll" : "quit_ww")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .ignoresSafeArea()
+                    .opacity(0.85)
+
+                bodyView
+            }
+        }
+        .ignoresSafeArea()
+        .preferredColorScheme(.dark)
+    }
+    
+    private var bodyView: some View {
+        VStack(spacing: 12) {
+            Spacer()
+            Text("ALLOW NOTIFICATIONS ABOUT BONUSES AND PROMOS")
+                .font(.system(size: 23, weight: .black, design: .monospaced))
+                .foregroundColor(.white)
+                .padding(.horizontal, 12)
+                .multilineTextAlignment(.center)
+            Text("STAY TUNED WITH BEST OFFERS FROM OUR CASINO")
+                .font(.system(size: 15, weight: .bold, design: .monospaced))
+                .foregroundColor(.white.opacity(0.7))
+                .padding(.horizontal, 12)
+                .multilineTextAlignment(.center)
+            actionButtons
+        }
+        .padding(.bottom, 24)
+    }
+
+}

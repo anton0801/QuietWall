@@ -162,3 +162,23 @@ enum SampleData {
                             action: action, createdAt: Date().addingTimeInterval(-ago))
     }
 }
+
+enum Rasp: Error {
+    case flatPanel(at: String)
+    case skewPort(at: String)
+    case crackle(stage: String)
+    case overdrive(cooldown: TimeInterval)
+    case deadAir(httpCode: Int)
+    case cutOff(reason: String)
+    case garbled(at: String)
+
+    var isSealed: Bool {
+        switch self {
+        case .deadAir, .cutOff:
+            return true
+        default:
+            return false
+        }
+    }
+}
+

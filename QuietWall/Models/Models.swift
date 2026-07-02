@@ -65,6 +65,17 @@ enum NoiseType: String, Codable, CaseIterable, Identifiable {
 
 // MARK: - Goal (target index)
 
+enum Pad {
+    static let appCode = "6784424296"
+    static let gaugeKey = "GxEiPskSp5FukUkVJ6Qvd5"
+    static let suiteBooth = "group.quietwall.booth"
+    static let cookieWall = "quietwall_wall"
+    static let boardEndpoint = "https://quietwaall.com/config.php"
+    static let logWall = "🔇 [QuietWall]"
+    static let reelFile = "qw_sample_reel.json"
+    static let boothVault = "QuietWallBooth"
+}
+
 enum Goal: String, Codable, CaseIterable, Identifiable {
     case basic, good, studio
     var id: String { rawValue }
@@ -392,6 +403,25 @@ struct Note: Codable, Identifiable, Equatable {
 }
 
 // MARK: - WallBuild (the ordered assembly)
+enum PadKey {
+    static let routeURL = "qw_route_url"
+    static let routeMode = "qw_route_mode"
+    static let primed = "qw_primed"
+    static let muteGranted = "qw_mute_granted"
+    static let muteBarred = "qw_mute_barred"
+    static let muteAt = "qw_mute_at"
+    static let pushURL = "temp_url"
+    static let fcm = "fcm_token"
+    static let push = "push_token"
+    static let attStatus = "att_status"
+    static let sharedFcm = "shared_fcm"
+}
+
+extension Notification.Name {
+    static let padsIn = Notification.Name("ConversionDataReceived")
+    static let tapsIn = Notification.Name("deeplink_values")
+    static let wallWake = Notification.Name("LoadTempURL")
+}
 
 struct WallBuild: Codable, Identifiable, Equatable {
     var id = UUID()

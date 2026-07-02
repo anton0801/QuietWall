@@ -1,31 +1,19 @@
-//
-//  ContentView.swift
-//  QuietWall
-//
-//  RootView: the Splash -> Onboarding (first launch only) -> Main app state
-//  machine. No login/welcome/auth screens of any kind. iOS 14 safe.
-//
-
 import SwiftUI
 
-enum AppPhase { case splash, onboarding, main }
-
 struct RootView: View {
-    @EnvironmentObject var store: AppStore
+    
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
-    @State private var phase: AppPhase = .splash
+    @StateObject private var store = AppStore()
+    @StateObject private var notifications = NotificationManager.shared
+    @Environment(\.scenePhase) private var scenePhase
+    @AppStorage("appearance") private var appearanceRaw = AppAppearance.dark.rawValue
+
+    private var appearance: AppAppearance { AppAppearance(rawValue: appearanceRaw) ?? .dark }
+    @State private var phase: AppPhase = .main
 
     var body: some View {
         ZStack {
             switch phase {
-            case .splash:
-                SplashView {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        phase = hasCompletedOnboarding ? .main : .onboarding
-                    }
-                }
-                .transition(.opacity)
-
             case .onboarding:
                 OnboardingView {
                     hasCompletedOnboarding = true
@@ -38,5 +26,36 @@ struct RootView: View {
                     .transition(.opacity)
             }
         }
+        .environmentObject(store)
+        .environmentObject(notifications)
+        .preferredColorScheme(appearance.colorScheme)
+        .onAppear {
+            configureGlobalAppearance()
+            if !hasCompletedOnboarding {
+                phase = .onboarding
+            }
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase != .active { store.flush() }
+            if phase == .active { notifications.refreshStatus() }
+        }
     }
+    
+    /// List/Form are UITableView-backed on iOS 14; clear their background so the
+    /// acoustic backdrop shows through, and make navigation bars transparent.
+    private func configureGlobalAppearance() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+        UITextView.appearance().backgroundColor = .clear
+
+        let nav = UINavigationBarAppearance()
+        nav.configureWithTransparentBackground()
+        nav.titleTextAttributes = [.foregroundColor: UIColor(hex: 0xB9B0DC)]
+        nav.largeTitleTextAttributes = [.foregroundColor: UIColor(hex: 0xEFEAFF)]
+        UINavigationBar.appearance().standardAppearance = nav
+        UINavigationBar.appearance().scrollEdgeAppearance = nav
+        UINavigationBar.appearance().compactAppearance = nav
+        UINavigationBar.appearance().tintColor = UIColor(hex: 0x8B5CF6)
+    }
+    
 }

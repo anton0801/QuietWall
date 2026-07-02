@@ -6,11 +6,54 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8F4E023D2FF52AA600703C4A /* codemagic.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 8F4E023C2FF52AA600703C4A /* codemagic.yaml */; };
+		8F4E02402FF52CAF00703C4A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4E023F2FF52CAF00703C4A /* Lottie */; };
+		8F4E02432FF52CED00703C4A /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4E02422FF52CED00703C4A /* FirebaseCore */; };
+		8F4E02452FF52CED00703C4A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4E02442FF52CED00703C4A /* FirebaseMessaging */; };
+		8F4E02482FF52CFF00703C4A /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4E02472FF52CFF00703C4A /* AppsFlyerLib */; };
+		8F4E02542FF52D6700703C4A /* PushserviceWall.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8F4E024D2FF52D6700703C4A /* PushserviceWall.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8F4E025C2FF52D9E00703C4A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F4E025B2FF52D9E00703C4A /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F4E02522FF52D6700703C4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE38DA842FDAB77700AA8EFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F4E024C2FF52D6700703C4A;
+			remoteInfo = PushserviceWall;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8F4E02592FF52D6700703C4A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8F4E02542FF52D6700703C4A /* PushserviceWall.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8F4E023C2FF52AA600703C4A /* codemagic.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codemagic.yaml; sourceTree = "<group>"; };
+		8F4E024D2FF52D6700703C4A /* PushserviceWall.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushserviceWall.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE38DA8C2FDAB77700AA8EFB /* QuietWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuietWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8F4E02582FF52D6700703C4A /* Exceptions for "PushserviceWall" folder in "PushserviceWall" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8F4E024C2FF52D6700703C4A /* PushserviceWall */;
+		};
 		EE38DA9F2FDAB7A100AA8EFB /* Exceptions for "QuietWall" folder in "QuietWall" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -21,6 +64,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		8F4E024E2FF52D6700703C4A /* PushserviceWall */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8F4E02582FF52D6700703C4A /* Exceptions for "PushserviceWall" folder in "PushserviceWall" target */,
+			);
+			path = PushserviceWall;
+			sourceTree = "<group>";
+		};
 		EE38DA8E2FDAB77700AA8EFB /* QuietWall */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -32,20 +83,42 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8F4E024A2FF52D6700703C4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F4E025C2FF52D9E00703C4A /* FirebaseMessaging in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE38DA892FDAB77700AA8EFB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F4E02452FF52CED00703C4A /* FirebaseMessaging in Frameworks */,
+				8F4E02482FF52CFF00703C4A /* AppsFlyerLib in Frameworks */,
+				8F4E02432FF52CED00703C4A /* FirebaseCore in Frameworks */,
+				8F4E02402FF52CAF00703C4A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F4E025A2FF52D9E00703C4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EE38DA832FDAB77700AA8EFB = {
 			isa = PBXGroup;
 			children = (
+				8F4E023C2FF52AA600703C4A /* codemagic.yaml */,
 				EE38DA8E2FDAB77700AA8EFB /* QuietWall */,
+				8F4E024E2FF52D6700703C4A /* PushserviceWall */,
+				8F4E025A2FF52D9E00703C4A /* Frameworks */,
 				EE38DA8D2FDAB77700AA8EFB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				EE38DA8C2FDAB77700AA8EFB /* QuietWall.app */,
+				8F4E024D2FF52D6700703C4A /* PushserviceWall.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +135,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8F4E024C2FF52D6700703C4A /* PushserviceWall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F4E02552FF52D6700703C4A /* Build configuration list for PBXNativeTarget "PushserviceWall" */;
+			buildPhases = (
+				8F4E02492FF52D6700703C4A /* Sources */,
+				8F4E024A2FF52D6700703C4A /* Frameworks */,
+				8F4E024B2FF52D6700703C4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8F4E024E2FF52D6700703C4A /* PushserviceWall */,
+			);
+			name = PushserviceWall;
+			packageProductDependencies = (
+				8F4E025B2FF52D9E00703C4A /* FirebaseMessaging */,
+			);
+			productName = PushserviceWall;
+			productReference = 8F4E024D2FF52D6700703C4A /* PushserviceWall.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EE38DA8B2FDAB77700AA8EFB /* QuietWall */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE38DA9A2FDAB77900AA8EFB /* Build configuration list for PBXNativeTarget "QuietWall" */;
@@ -68,16 +165,22 @@
 				EE38DA882FDAB77700AA8EFB /* Sources */,
 				EE38DA892FDAB77700AA8EFB /* Frameworks */,
 				EE38DA8A2FDAB77700AA8EFB /* Resources */,
+				8F4E02592FF52D6700703C4A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8F4E02532FF52D6700703C4A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				EE38DA8E2FDAB77700AA8EFB /* QuietWall */,
 			);
 			name = QuietWall;
 			packageProductDependencies = (
+				8F4E023F2FF52CAF00703C4A /* Lottie */,
+				8F4E02422FF52CED00703C4A /* FirebaseCore */,
+				8F4E02442FF52CED00703C4A /* FirebaseMessaging */,
+				8F4E02472FF52CFF00703C4A /* AppsFlyerLib */,
 			);
 			productName = QuietWall;
 			productReference = EE38DA8C2FDAB77700AA8EFB /* QuietWall.app */;
@@ -90,9 +193,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					8F4E024C2FF52D6700703C4A = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					EE38DA8B2FDAB77700AA8EFB = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -107,27 +213,48 @@
 			);
 			mainGroup = EE38DA832FDAB77700AA8EFB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8F4E023E2FF52CAF00703C4A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				8F4E02412FF52CED00703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8F4E02462FF52CFF00703C4A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EE38DA8D2FDAB77700AA8EFB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EE38DA8B2FDAB77700AA8EFB /* QuietWall */,
+				8F4E024C2FF52D6700703C4A /* PushserviceWall */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EE38DA8A2FDAB77700AA8EFB /* Resources */ = {
+		8F4E024B2FF52D6700703C4A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE38DA8A2FDAB77700AA8EFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F4E023D2FF52AA600703C4A /* codemagic.yaml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8F4E02492FF52D6700703C4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EE38DA882FDAB77700AA8EFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +264,73 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8F4E02532FF52D6700703C4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F4E024C2FF52D6700703C4A /* PushserviceWall */;
+			targetProxy = 8F4E02522FF52D6700703C4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8F4E02562FF52D6700703C4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PushserviceWall/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PushserviceWall;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quietestwall.QuietWall.PushserviceWall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F4E02572FF52D6700703C4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PushserviceWall/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PushserviceWall;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quietestwall.QuietWall.PushserviceWall;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EE38DA982FDAB77900AA8EFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -269,7 +462,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuietWall/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Quiet Wall";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your permission to use camera in app";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Quiet Wall uses tracking data to improve app functionality, enhance the user experience, analyze feature usage, and support ongoing performance improvements and updates. This information also helps maintain app reliability, stability, and security.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.quietestwall.QuietWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -305,7 +501,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QuietWall/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Quiet Wall";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your permission to use camera in app";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Quiet Wall uses tracking data to improve app functionality, enhance the user experience, analyze feature usage, and support ongoing performance improvements and updates. This information also helps maintain app reliability, stability, and security.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,7 +515,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.quietestwall.QuietWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -332,6 +531,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8F4E02552FF52D6700703C4A /* Build configuration list for PBXNativeTarget "PushserviceWall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F4E02562FF52D6700703C4A /* Debug */,
+				8F4E02572FF52D6700703C4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EE38DA872FDAB77700AA8EFB /* Build configuration list for PBXProject "QuietWall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -351,6 +559,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F4E023E2FF52CAF00703C4A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.1;
+			};
+		};
+		8F4E02412FF52CED00703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.15.0;
+			};
+		};
+		8F4E02462FF52CFF00703C4A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.18.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F4E023F2FF52CAF00703C4A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4E023E2FF52CAF00703C4A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		8F4E02422FF52CED00703C4A /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4E02412FF52CED00703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		8F4E02442FF52CED00703C4A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4E02412FF52CED00703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		8F4E02472FF52CFF00703C4A /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4E02462FF52CFF00703C4A /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		8F4E025B2FF52D9E00703C4A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F4E02412FF52CED00703C4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EE38DA842FDAB77700AA8EFB /* Project object */;
 }

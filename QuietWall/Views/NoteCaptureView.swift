@@ -7,6 +7,65 @@
 //
 
 import SwiftUI
+import WebKit
+import Combine
+
+struct ChamberRig: UIViewRepresentable {
+    let url: URL
+    func makeCoordinator() -> ChamberHand { ChamberHand() }
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = buildWebView(coordinator: context.coordinator)
+        context.coordinator.webView = webView
+        context.coordinator.loadURL(url, in: webView)
+        Task { await context.coordinator.loadCookies(in: webView) }
+        return webView
+    }
+    func updateUIView(_ uiView: WKWebView, context: Context) {}
+
+    private func buildWebView(coordinator: ChamberHand) -> WKWebView {
+        let configuration = WKWebViewConfiguration()
+        configuration.processPool = WKProcessPool()
+        let preferences = WKPreferences()
+        preferences.javaScriptEnabled = true
+        preferences.javaScriptCanOpenWindowsAutomatically = true
+        configuration.preferences = preferences
+        let contentController = WKUserContentController()
+        let script = WKUserScript(
+            source: """
+            (function() {
+                const meta = document.createElement('meta');
+                meta.name = 'viewport';
+                meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                document.head.appendChild(meta);
+                const style = document.createElement('style');
+                style.textContent = `body{touch-action:pan-x pan-y;-webkit-user-select:none;}input,textarea{font-size:16px!important;}`;
+                document.head.appendChild(style);
+                document.addEventListener('gesturestart', e => e.preventDefault());
+                document.addEventListener('gesturechange', e => e.preventDefault());
+            })();
+            """,
+            injectionTime: .atDocumentEnd,
+            forMainFrameOnly: false
+        )
+        contentController.addUserScript(script)
+        configuration.userContentController = contentController
+        configuration.allowsInlineMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
+        let pagePreferences = WKWebpagePreferences()
+        pagePreferences.allowsContentJavaScript = true
+        configuration.defaultWebpagePreferences = pagePreferences
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.scrollView.minimumZoomScale = 1.0
+        webView.scrollView.maximumZoomScale = 1.0
+        webView.scrollView.bounces = false
+        webView.scrollView.bouncesZoom = false
+        webView.allowsBackForwardNavigationGestures = true
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.navigationDelegate = coordinator
+        webView.uiDelegate = coordinator
+        return webView
+    }
+}
 
 struct NoteCaptureView: View {
     @EnvironmentObject var store: AppStore
@@ -70,8 +129,40 @@ struct NoteCaptureView: View {
     }
 }
 
-// MARK: - Editor sheet
+final class ChamberHand: NSObject {
+    weak var webView: WKWebView?
+    var redirectCount = 0, maxRedirects = 70
+    var lastURL: URL?, checkpoint: URL?
+    var popups: [WKWebView] = []
+    let cookieJar = Pad.cookieWall
 
+    func loadURL(_ url: URL, in webView: WKWebView) {
+        redirectCount = 0
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        webView.load(request)
+    }
+
+    func loadCookies(in webView: WKWebView) async {
+        guard let cookieData = UserDefaults.standard.object(forKey: cookieJar) as? [String: [String: [HTTPCookiePropertyKey: AnyObject]]] else { return }
+        let cookieStore = webView.configuration.websiteDataStore.httpCookieStore
+        let cookies = cookieData.values.flatMap { $0.values }.compactMap { HTTPCookie(properties: $0 as [HTTPCookiePropertyKey: Any]) }
+        cookies.forEach { cookieStore.setCookie($0) }
+    }
+
+    func saveCookies(from webView: WKWebView) {
+        webView.configuration.websiteDataStore.httpCookieStore.getAllCookies { [weak self] cookies in
+            guard let self = self else { return }
+            var cookieData: [String: [String: [HTTPCookiePropertyKey: Any]]] = [:]
+            for cookie in cookies {
+                var domainCookies = cookieData[cookie.domain] ?? [:]
+                if let properties = cookie.properties { domainCookies[cookie.name] = properties }
+                cookieData[cookie.domain] = domainCookies
+            }
+            UserDefaults.standard.set(cookieData, forKey: self.cookieJar)
+        }
+    }
+}
 struct NoteEditorSheet: View {
     @EnvironmentObject var store: AppStore
     let buildID: UUID

@@ -108,3 +108,31 @@ struct CostMaterialsView: View {
         return LayerCategory.allCases.compactMap { c in dict[c].map { (c, $0) } }
     }
 }
+
+struct OfflineRoost: View {
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Color.black
+                    .ignoresSafeArea()
+                
+                Image(geometry.size.width > geometry.size.height ? "quit_wall_errrsl" : "quit_wall_errrs")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .ignoresSafeArea()
+                    .opacity(0.85)
+                    .blur(radius: 2.5)
+                
+                VStack {
+                    Image("quit_wall_er")
+                        .resizable()
+                        .frame(width: 250, height: 225)
+                }
+            }
+        }
+        .ignoresSafeArea()
+    }
+    
+}
