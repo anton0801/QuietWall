@@ -133,10 +133,10 @@ extension AppDelegate: AppsFlyerLibDelegate, DeepLinkDelegate {
     }
 
     func onConversionDataFail(_ error: Error) {
-        relayPads([
-            "error": true,
-            "error_desc": error.localizedDescription
-        ])
+//        relayPads([
+//            "error": true,
+//            "error_desc": error.localizedDescription
+//        ])
     }
 
     func didResolveDeepLink(_ result: DeepLinkResult) {
